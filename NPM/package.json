@@ -1,0 +1,15 @@
+{
+  "name": "learnnpm",
+  "version": "1.0.0",
+  "description": "mail varification and so on",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fahim rahman",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "validator": "^13.6.0"
+  }
+}

@@ -5,6 +5,17 @@
 // console.log(window);//global
 
 // console.log(module);
-const logger = require('./logger');
+// const logger = require('./logger');
 
-logger('Message')
+// logger('Message')
+const add=(a,b)=>{
+    return a+b;
+};
+const sub=(a,b)=>{
+    return a-b;
+};
+
+const name="Fahim"
+// module.exports.add=add;
+// module.exports.sub=sub;
+module.exports={add,sub,name}
