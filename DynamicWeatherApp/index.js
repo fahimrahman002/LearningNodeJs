@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
         const arrData = [objData];
 
         console.log("Getting data..");
-        // console.log(arrData[0].main.temp - 273.15);
+
         const realTimeData = arrData
           .map((val) => replaceVal(homeFile, val))
           .join("");
