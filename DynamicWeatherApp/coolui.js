@@ -8,7 +8,7 @@ fs.readFile("coolUI.html", "utf-8", (err, data) => {
 const replaceVal = (tempVal, orgVal) => {
   let temperature = tempVal.replace(
     "{%temperature%}",
-    orgVal.main.temp - 273.15,
+    (orgVal.main.temp - 273.15).toFixed(1),
     (err) => {}
   );
   temperature = temperature.replace(
@@ -29,12 +29,12 @@ const replaceVal = (tempVal, orgVal) => {
   );
   temperature = temperature.replace(
     "{%tempmin%}",
-    orgVal.main.temp_min - 273.15,
+    (orgVal.main.temp_min - 273.15).toFixed(2),
     (err) => {}
   );
   temperature = temperature.replace(
     "{%tempmax%}",
-    orgVal.main.temp_max - 273.15,
+    (orgVal.main.temp_max - 273.15).toFixed(2),
     (err) => {}
   );
   temperature = temperature.replace(
@@ -59,7 +59,7 @@ const replaceVal = (tempVal, orgVal) => {
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
     request(
-      "http://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=f47a4ee422529a5f19ce0b20405b9097"
+      "http://api.openweathermap.org/data/2.5/weather?q=Mymensingh&appid=f47a4ee422529a5f19ce0b20405b9097"
     )
       .on("data", (chunk) => {
         const objData = JSON.parse(chunk);
