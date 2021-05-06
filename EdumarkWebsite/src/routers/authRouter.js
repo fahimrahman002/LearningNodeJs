@@ -1,4 +1,5 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const router = new express.Router();
 const StudentModel = require("../models/studentModel");
 router.use(express.json());
@@ -12,8 +13,9 @@ router.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-    const student = await StudentModel.find({ email, password });
-    if (student.length != 0) {
+    const student = await StudentModel.findOne({ email });
+    const valid = await bcrypt.compare(password, student.password);
+    if (valid) {
       console.log(student);
       res.render("index", {
         msgtype: "success",
@@ -26,7 +28,7 @@ router.post("/login", async (req, res) => {
       });
     }
   } catch (err) {
-    res.render("contact", {
+    res.render("index", {
       msgtype: "error",
       msg: `Error: ${err}`,
       msgtime: 3000,
@@ -50,13 +52,13 @@ router.post("/register", async (req, res) => {
         msg: "Registration successful",
       });
     } else {
-      res.render("contact", {
+      res.render("index", {
         msgtype: "warning",
         msg: "Password and Confirm must be same",
       });
     }
   } catch (err) {
-    res.render("contact", {
+    res.render("index", {
       msgtype: "error",
       msg: `Error: ${err}`,
       msgtime: 3000,
