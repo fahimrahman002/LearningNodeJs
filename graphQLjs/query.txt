@@ -1,0 +1,46 @@
+*--------queries-------*
+
+query getSingleCourse($courseId: Int!) {
+  course(id: $courseId) {
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+query getCoursesForTopic($courseTopic: String) {
+  courses(topic: $courseTopic) {
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+query getCoursesWithFragments($courseID1: Int!,$courseID2: Int!) {
+  course1:course(id: $courseID1) {
+   ...courseFields
+  }
+  course2:course(id: $courseID2) {
+   ...courseFields
+  }
+}
+mutation updateCourseTopic($id:Int!,$topic:String!){
+    updateCourseTopic(id:$id,topic:$topic){
+        ...courseFields
+    }
+}
+fragment courseFields on Course{
+    title
+    author
+    description
+    topic
+    url
+}
+
+*--------query variables-------*
+{"courseId":1}
+{"courseTopic":"Node js"}
+{"courseID1":1,"courseID2":2}
+{"id":1,"topic":"JavaScript"}
