@@ -25,22 +25,7 @@
 
     });
 </script>
-<script>
-    function myFunction(x) {
-        if (x.matches) { // If media query matches
-            document.getElementById("loginbtn").style.visibility = 'block';
-            document.getElementById("contactnum").style.visibility = 'block';
-        } else {
-            document.getElementById("loginbtn").style.visibility = 'hidden';
-            document.getElementById("contactnum").style.visibility = 'hidden';
 
-        }
-    }
-
-    var w = window.matchMedia("(max-width: 990px)")
-    myFunction(w) // Call listener function at run time
-    w.addListener(myFunction)
-</script>
 <!-- JS here -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="js/vendor/jquery-1.12.4.min.js"></script>

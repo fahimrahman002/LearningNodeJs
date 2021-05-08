@@ -13,7 +13,7 @@ app.set("views", templatePath);
 hbs.registerPartials(partialPath);
 
 const authRouter = require("./routers/authRouter.js");
-
+const navRouter = require("./routers/navRouter.js");
 authRouter.use(express.json());
 authRouter.use(
   express.urlencoded({
@@ -21,10 +21,8 @@ authRouter.use(
   })
 );
 app.use(authRouter);
+app.use(navRouter);
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 // app.get("/contact", (req, res) => {
 //   res.render("contact");
